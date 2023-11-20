@@ -8,10 +8,13 @@
 
   <ItemGroup>
     <None Remove="Services\" />
-    <None Remove="İnterfaces\" />
+    <None Remove="Services\İnterfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
-    <Folder Include="İnterfaces\" />
+    <Folder Include="Services\İnterfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Repository\Repository.csproj" />
   </ItemGroup>
 </Project>

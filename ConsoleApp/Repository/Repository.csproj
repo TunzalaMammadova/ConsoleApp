@@ -7,9 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="İnterfaces\" />
+    <None Remove="Data\" />
+    <None Remove="Repositories\" />
+    <None Remove="Repositories\İnterfaces\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="İnterfaces\" />
+    <Folder Include="Data\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Repositories\İnterfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 </Project>
