@@ -1,11 +1,10 @@
 ﻿using System;
 namespace Domain.Models
 {
-	public class Group
+	public class Group : BaseEntity
 	{
-		public Group()
-		{
-		}
+		public string Name { get; set; }
+		public string Capacity { get; set; }
 	}
 }
 
