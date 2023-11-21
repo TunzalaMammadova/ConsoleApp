@@ -1,19 +1,20 @@
 ﻿<Properties StartupConfiguration="{5D48BA2B-AD4C-4054-B007-1AB28451FDF3}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Repository/Repositories/StudentRepository.cs">
+  <MonoDevelop.Ide.ItemProperties.Domain FirstBuild="True" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Repository/Enums/SortType.cs">
     <Files>
-      <File FileName="ConsoleApp/Program.cs" Line="1" Column="1" />
-      <File FileName="Domain/Models/Group.cs" Line="11" Column="1" />
-      <File FileName="Domain/Models/Student.cs" Line="15" Column="1" />
-      <File FileName="Domain/Models/User.cs" Line="1" Column="1" />
+      <File FileName="ConsoleApp/Program.cs" />
+      <File FileName="Domain/Models/Group.cs" />
+      <File FileName="Domain/Models/Student.cs" />
+      <File FileName="Domain/Models/User.cs" />
       <File FileName="Repository/Data/AppDbContext.cs" />
-      <File FileName="Repository/Repositories/İnterfaces/IBaseRepository.cs" Line="14" Column="3" />
-      <File FileName="Repository/Repositories/BaseRepository.cs" Line="34" Column="7" />
+      <File FileName="Repository/Repositories/İnterfaces/IBaseRepository.cs" Line="16" Column="1" />
+      <File FileName="Repository/Repositories/BaseRepository.cs" Line="22" Column="26" />
       <File FileName="Domain/Common/BaseEntity.cs" />
-      <File FileName="Repository/Repositories/GroupRepository.cs" Line="23" Column="18" />
+      <File FileName="Repository/Repositories/GroupRepository.cs" Line="17" Column="10" />
       <File FileName="Repository/Repositories/İnterfaces/IStudentRepository.cs" Line="14" Column="1" />
       <File FileName="Repository/Repositories/StudentRepository.cs" Line="32" Column="1" />
-      <File FileName="Repository/Repositories/İnterfaces/IGroupRepository.cs" Line="10" Column="8" />
-      <File FileName="Repository/Enums/SortType.cs" Line="7" Column="7" />
+      <File FileName="Repository/Repositories/İnterfaces/IGroupRepository.cs" Line="14" Column="1" />
+      <File FileName="Repository/Enums/SortType.cs" Line="11" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -24,10 +25,8 @@
               <Node name="Models" expanded="True" />
             </Node>
             <Node name="Repository">
-              <Node name="Enums" expanded="True" />
-              <Node name="Repositories" expanded="True">
-                <Node name="İnterfaces" expanded="True" />
-                <Node name="StudentRepository.cs" selected="True" />
+              <Node name="Enums" expanded="True">
+                <Node name="SortType.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -35,14 +34,13 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.Domain FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.ConsoleApp FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Service FirstBuild="True" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Repository FirstBuild="True" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Service FirstBuild="True" />
-  <MonoDevelop.Ide.ItemProperties.ConsoleApp FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Repository FirstBuild="True" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

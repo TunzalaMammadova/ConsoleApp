@@ -1,11 +1,10 @@
 ﻿using System;
 namespace Repository.Enums
 {
-	public class SortType
+	public enum SortType
 	{
-		public SortType()
-		{
-		}
+		Asc = 1,
+		Desc 
 	}
 }
 
