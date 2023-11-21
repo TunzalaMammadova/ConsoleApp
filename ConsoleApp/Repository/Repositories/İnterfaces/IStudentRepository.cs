@@ -6,8 +6,8 @@ namespace Repository.Repositories.İnterfaces
 {
 	public interface IStudentRepository : IBaseRepository<Student>
 	{
-        public List<Student> Search(string searchText);
-        public List<Student> Sort(SortType sort);
+        List<Student> Search(string searchText);
+        List<Student> Sort(SortType sort);
     }
 }
 

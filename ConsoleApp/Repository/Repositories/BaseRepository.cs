@@ -17,9 +17,9 @@ namespace Repository.Repositories
             AppDbContext<T>.Datas.Remove(entity);
         }
 
-        public void Edit(T entity)
+        public void Edit(int id, T entity)
         {
-            throw new NotImplementedException();
+            T existPerson = AppDbContext<T>.Datas.FirstOrDefault(m => m.Id == id);
         }
 
         public List<T> GetAll() => AppDbContext<T>.Datas.ToList();
