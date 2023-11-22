@@ -18,38 +18,30 @@ namespace Service.Services
 
         public void Create(Group group)
         {
-            throw new NotImplementedException();
+            _groupRepository.Create(group);
         }
 
         public void Delete(Group group)
         {
-            throw new NotImplementedException();
+            _groupRepository.Delete(group);
         }
 
         public void Edit(int id, Group group)
         {
-            throw new NotImplementedException();
+            _groupRepository.Edit(id,group);
         }
 
-        public List<Group> GetAll()
-        {
-            throw new NotImplementedException();
-        }
+        public List<Group> GetAll() => _groupRepository.GetAll();
 
-        public Group GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public List<Group> Search(string searchText)
-        {
-            throw new NotImplementedException();
-        }
+        public Group GetById(int id) => _groupRepository.GetById(id);
 
-        public List<Group> Sort(SortType sort)
-        {
-            throw new NotImplementedException();
-        }
+
+        public List<Group> Search(string searchText) => _groupRepository.Search(searchText);
+        
+
+        public List<Group> Sort(SortType sort) => _groupRepository.Sort(sort);
+        
     }
 }
 

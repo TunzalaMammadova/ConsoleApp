@@ -1,3 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Service.Helpers.Extensions;
 
+
+ConsoleColor.Blue.WriteConsole("P418");

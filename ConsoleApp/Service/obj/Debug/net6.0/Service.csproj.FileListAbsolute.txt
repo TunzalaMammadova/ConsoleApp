@@ -1,0 +1,17 @@
+/Users/tunzale/Projects/ConsoleApp/Service/bin/Debug/net6.0/Service.deps.json
+/Users/tunzale/Projects/ConsoleApp/Service/bin/Debug/net6.0/Service.dll
+/Users/tunzale/Projects/ConsoleApp/Service/bin/Debug/net6.0/Service.pdb
+/Users/tunzale/Projects/ConsoleApp/Service/bin/Debug/net6.0/Domain.dll
+/Users/tunzale/Projects/ConsoleApp/Service/bin/Debug/net6.0/Repository.dll
+/Users/tunzale/Projects/ConsoleApp/Service/bin/Debug/net6.0/Repository.pdb
+/Users/tunzale/Projects/ConsoleApp/Service/bin/Debug/net6.0/Domain.pdb
+/Users/tunzale/Projects/ConsoleApp/Service/obj/Debug/net6.0/Service.csproj.AssemblyReference.cache
+/Users/tunzale/Projects/ConsoleApp/Service/obj/Debug/net6.0/Service.GeneratedMSBuildEditorConfig.editorconfig
+/Users/tunzale/Projects/ConsoleApp/Service/obj/Debug/net6.0/Service.AssemblyInfoInputs.cache
+/Users/tunzale/Projects/ConsoleApp/Service/obj/Debug/net6.0/Service.AssemblyInfo.cs
+/Users/tunzale/Projects/ConsoleApp/Service/obj/Debug/net6.0/Service.csproj.CoreCompileInputs.cache
+/Users/tunzale/Projects/ConsoleApp/Service/obj/Debug/net6.0/Service.csproj.CopyComplete
+/Users/tunzale/Projects/ConsoleApp/Service/obj/Debug/net6.0/Service.dll
+/Users/tunzale/Projects/ConsoleApp/Service/obj/Debug/net6.0/refint/Service.dll
+/Users/tunzale/Projects/ConsoleApp/Service/obj/Debug/net6.0/Service.pdb
+/Users/tunzale/Projects/ConsoleApp/Service/obj/Debug/net6.0/ref/Service.dll

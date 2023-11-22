@@ -1,5 +1,6 @@
 ﻿using System;
 using Domain.Models;
+using Repository.Enums;
 
 namespace Repository.Repositories.İnterfaces
 {
@@ -8,7 +9,7 @@ namespace Repository.Repositories.İnterfaces
 		void Create(T entity);
 		void Delete(T entity);
 		void Edit(int id,T entity);
-		T GetById(int id);
+        T GetById(int id);
         List<T> GetAll();
     }
 }

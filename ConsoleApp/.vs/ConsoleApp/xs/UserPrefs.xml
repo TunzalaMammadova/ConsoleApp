@@ -1,54 +1,59 @@
 ﻿<Properties StartupConfiguration="{5D48BA2B-AD4C-4054-B007-1AB28451FDF3}|Default">
-  <MonoDevelop.Ide.ItemProperties.Repository FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.ConsoleApp PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Repository/Repositories/İnterfaces/IStudentRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Service/Services/GroupService.cs">
     <Files>
-      <File FileName="ConsoleApp/Program.cs" />
-      <File FileName="Domain/Models/Group.cs" />
-      <File FileName="Domain/Models/Student.cs" />
-      <File FileName="Domain/Models/User.cs" />
-      <File FileName="Repository/Data/AppDbContext.cs" />
-      <File FileName="Repository/Repositories/İnterfaces/IBaseRepository.cs" Line="8" Column="3" />
-      <File FileName="Repository/Repositories/BaseRepository.cs" Line="18" Column="10" />
-      <File FileName="Domain/Common/BaseEntity.cs" Line="10" Column="1" />
-      <File FileName="Repository/Repositories/GroupRepository.cs" Line="32" Column="1" />
+      <File FileName="ConsoleApp/Program.cs" Line="4" Column="10" />
+      <File FileName="Domain/Models/Group.cs" Line="1" Column="1" />
+      <File FileName="Domain/Models/Student.cs" Line="1" Column="1" />
+      <File FileName="Domain/Models/User.cs" Line="14" Column="1" />
+      <File FileName="Repository/Data/AppDbContext.cs" Line="3" Column="2" />
+      <File FileName="Repository/Repositories/İnterfaces/IBaseRepository.cs" Line="11" Column="30" />
+      <File FileName="Repository/Repositories/BaseRepository.cs" Line="25" Column="12" />
+      <File FileName="Domain/Common/BaseEntity.cs" Line="1" Column="1" />
+      <File FileName="Repository/Repositories/GroupRepository.cs" Line="31" Column="1" />
       <File FileName="Repository/Repositories/İnterfaces/IStudentRepository.cs" Line="14" Column="1" />
-      <File FileName="Repository/Repositories/StudentRepository.cs" />
-      <File FileName="Repository/Repositories/İnterfaces/IGroupRepository.cs" Line="9" Column="9" />
-      <File FileName="Repository/Enums/SortType.cs" Line="11" Column="1" />
-      <File FileName="Service/Services/İnterfaces/IStudentService.cs" Line="1" Column="1" />
-      <File FileName="Service/Services/StudentService.cs" Line="6" Column="3" />
-      <File FileName="Service/Services/GroupService.cs" Line="24" Column="18" />
-      <File FileName="Service/Services/İnterfaces/IGroupService.cs" Line="15" Column="41" />
+      <File FileName="Repository/Repositories/StudentRepository.cs" Line="25" Column="14" />
+      <File FileName="Repository/Repositories/İnterfaces/IGroupRepository.cs" Line="14" Column="1" />
+      <File FileName="Repository/Enums/SortType.cs" Line="1" Column="1" />
+      <File FileName="Service/Services/İnterfaces/IStudentService.cs" Line="19" Column="1" />
+      <File FileName="Service/Services/StudentService.cs" Line="36" Column="1" />
+      <File FileName="Service/Services/GroupService.cs" Line="28" Column="1" />
+      <File FileName="Service/Services/İnterfaces/IGroupService.cs" Line="19" Column="1" />
+      <File FileName="Repository/Enums/OperationType.cs" Line="6" Column="3" />
+      <File FileName="Service/Helpers/Extensions/ConsoleExtension.cs" Line="15" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="ConsoleApp">
-            <Node name="ConsoleApp" expanded="True" />
-            <Node name="Domain" expanded="True" />
+          <Node name="ConsoleApp" expanded="True">
+            <Node name="Domain" expanded="True">
+              <Node name="Common" expanded="True" />
+              <Node name="Models" expanded="True" />
+            </Node>
             <Node name="Repository">
+              <Node name="Data" expanded="True" />
               <Node name="Enums" expanded="True" />
               <Node name="Repositories" expanded="True">
-                <Node name="İnterfaces" expanded="True">
-                  <Node name="IStudentRepository.cs" selected="True" />
-                </Node>
+                <Node name="İnterfaces" expanded="True" />
               </Node>
             </Node>
             <Node name="Service">
-              <Node name="Services" expanded="True" />
+              <Node name="Helpers">
+                <Node name="Extensions" selected="True" />
+              </Node>
+              <Node name="Services" expanded="True">
+                <Node name="İnterfaces" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.ConsoleApp FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.ItemProperties.Service FirstBuild="True" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Domain FirstBuild="True" />
 </Properties>
