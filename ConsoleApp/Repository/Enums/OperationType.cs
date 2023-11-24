@@ -3,7 +3,9 @@ namespace Repository.Enums
 {
 	public enum OperationType
 	{
-		GroupCreate = 1,
+		Register = 1,
+        Login,
+		GroupCreate,
 		GroupDelete,
 		GroupEdit,
 		GroupSearch,

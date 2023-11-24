@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Linq;
 using Domain.Models;
 using Service.Helpers.Extensions;
 using Service.Services;
@@ -100,7 +101,49 @@ namespace ConsoleApp.Controllers
 
             _userService.Register(user);
 
-            ConsoleColor.Green.WriteConsole("Registration is successfull");
+            ConsoleColor.DarkGreen.WriteConsole("Registration is successfull");
+        }
+
+        public void Login()
+        {
+            Email: ConsoleColor.DarkBlue.WriteConsole("Please enter your email:");
+            string email = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                ConsoleColor.Red.WriteConsole("Cannot be empty, please try again");
+                goto Email;
+            }
+            else if (!email.CheckEmail())
+            {
+                ConsoleColor.Red.WriteConsole("Format is wrong, please try again");
+                goto Email;
+            }
+            else
+            {
+                email.CheckEmail();
+            }
+
+            Password: ConsoleColor.White.WriteConsole("Please enter your password:");
+            string password = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                ConsoleColor.Red.WriteConsole("Cannot be empty, please try again");
+                goto Password;
+            }
+
+            User user = new User()
+            {
+                Email = email,
+                Password = password
+
+            };
+
+            _userService.Login(email,password);
+
+            ConsoleColor.DarkGreen.WriteConsole("Login success");
+
         }
 
 
