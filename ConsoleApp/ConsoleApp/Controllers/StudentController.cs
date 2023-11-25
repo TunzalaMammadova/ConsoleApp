@@ -226,6 +226,10 @@ namespace ConsoleApp.Controllers
                 ConsoleColor.Red.WriteConsole(ex.Message);
                 goto Id;
             }
+        }
+
+        public void Edit()
+        {
 
         }
     }

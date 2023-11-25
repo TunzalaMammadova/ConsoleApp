@@ -1,35 +1,41 @@
 ﻿<Properties StartupConfiguration="{5D48BA2B-AD4C-4054-B007-1AB28451FDF3}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ConsoleApp/Controllers/StudentController.cs">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.ConsoleApp PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ConsoleApp/Controllers/GroupController.cs">
     <Files>
-      <File FileName="ConsoleApp/Program.cs" Line="47" Column="23" />
+      <File FileName="ConsoleApp/Program.cs" />
       <File FileName="Repository/Enums/SortType.cs" />
-      <File FileName="Service/Services/StudentService.cs" Line="1" Column="1" />
-      <File FileName="Service/Services/GroupService.cs" Line="1" Column="1" />
+      <File FileName="Service/Services/StudentService.cs" />
+      <File FileName="Service/Services/GroupService.cs" />
       <File FileName="Repository/Enums/OperationType.cs" />
-      <File FileName="Service/Helpers/Extensions/ConsoleExtension.cs" Line="1" Column="1" />
+      <File FileName="Service/Helpers/Extensions/ConsoleExtension.cs" />
       <File FileName="Service/Services/UserService.cs" />
       <File FileName="Service/Services/İnterfaces/IUserService.cs" />
-      <File FileName="ConsoleApp/Controllers/GroupController.cs" Line="108" Column="10" />
-      <File FileName="ConsoleApp/Controllers/StudentController.cs" Line="6" Column="34" />
-      <File FileName="ConsoleApp/Controllers/UserController.cs" Line="1" Column="1" />
+      <File FileName="ConsoleApp/Controllers/GroupController.cs" Line="260" Column="2" />
+      <File FileName="ConsoleApp/Controllers/StudentController.cs" Line="104" Column="69" />
+      <File FileName="ConsoleApp/Controllers/UserController.cs" Line="119" Column="14" />
       <File FileName="Domain/Models/User.cs" />
       <File FileName="Domain/Models/Group.cs" />
-      <File FileName="Service/Helpers/Extensions/UserExtensions.cs" Line="1" Column="1" />
+      <File FileName="Service/Helpers/Extensions/UserExtensions.cs" />
       <File FileName="Repository/Repositories/GroupRepository.cs" />
-      <File FileName="Repository/Repositories/BaseRepository.cs" Line="1" Column="1" />
+      <File FileName="Repository/Repositories/BaseRepository.cs" />
       <File FileName="Repository/Repositories/İnterfaces/IGroupRepository.cs" />
-      <File FileName="Repository/Repositories/İnterfaces/IBaseRepository.cs" Line="1" Column="1" />
-      <File FileName="Repository/Repositories/StudentRepository.cs" Line="1" Column="1" />
-      <File FileName="Repository/Repositories/UserRepository.cs" />
+      <File FileName="Repository/Repositories/İnterfaces/IBaseRepository.cs" />
+      <File FileName="Repository/Repositories/StudentRepository.cs" />
+      <File FileName="Repository/Repositories/UserRepository.cs" Line="1" Column="1" />
       <File FileName="Repository/Repositories/İnterfaces/IUserRepository.cs" />
-      <File FileName="Service/Helpers/Constants/UserNotification.cs" />
-      <File FileName="Service/Helpers/Constants/GroupNotification.cs" />
-      <File FileName="Service/Helpers/Constants/StudentNotification.cs" />
+      <File FileName="Service/Helpers/Constants/UserNotification.cs" Line="13" Column="85" />
+      <File FileName="Service/Helpers/Constants/GroupNotification.cs" Line="22" Column="71" />
+      <File FileName="Service/Helpers/Constants/StudentNotification.cs" Line="1" Column="1" />
       <File FileName="Service/Services/İnterfaces/IGroupService.cs" />
       <File FileName="Service/Exceptions/NotFoundException.cs" />
       <File FileName="Service/Services/İnterfaces/IStudentService.cs" />
       <File FileName="Repository/Repositories/İnterfaces/IStudentRepository.cs" />
-      <File FileName="Domain/Models/Student.cs" Line="14" Column="1" />
+      <File FileName="Domain/Models/Student.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -37,33 +43,23 @@
           <Node name="ConsoleApp" expanded="True">
             <Node name="ConsoleApp">
               <Node name="Controllers" expanded="True">
-                <Node name="StudentController.cs" selected="True" />
+                <Node name="GroupController.cs" selected="True" />
               </Node>
-            </Node>
-            <Node name="Domain" expanded="True">
-              <Node name="Models" expanded="True" />
             </Node>
             <Node name="Repository" expanded="True">
               <Node name="Repositories" expanded="True">
                 <Node name="İnterfaces" expanded="True" />
               </Node>
             </Node>
-            <Node name="Service" expanded="True">
+            <Node name="Service">
               <Node name="Helpers" expanded="True">
-                <Node name="Extensions" expanded="True" />
+                <Node name="Constants" expanded="True" />
               </Node>
-              <Node name="Services" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.ConsoleApp PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
 </Properties>

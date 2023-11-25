@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Xml.Linq;
 using Domain.Models;
+using Service.Helpers.Constants;
 using Service.Helpers.Extensions;
 using Service.Services;
 using Service.Services.İnterfaces;
@@ -18,51 +19,51 @@ namespace ConsoleApp.Controllers
 
         public void Register()
         {
-            Name: ConsoleColor.DarkBlue.WriteConsole("Please enter your name:");
+            Name: ConsoleColor.Yellow.WriteConsole(UserNotification.EnterName);
             string name = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(name))
             {
-                ConsoleColor.Red.WriteConsole("Cannot be empty, please try again");
+                ConsoleColor.Red.WriteConsole(UserNotification.InputEmptyMessage);
                 goto Name;
             }
 
-            Surname: ConsoleColor.DarkBlue.WriteConsole("Please enter your surname:");
+            Surname: ConsoleColor.Yellow.WriteConsole(UserNotification.EnterSurname);
             string surname = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(surname))
             {
-                ConsoleColor.Red.WriteConsole("Cannot be empty, please try again");
+                ConsoleColor.Red.WriteConsole(UserNotification.InputEmptyMessage);
                 goto Surname;
             }
 
             
-            Age: ConsoleColor.DarkBlue.WriteConsole("Please enter your age:");
+            Age: ConsoleColor.Yellow.WriteConsole(UserNotification.EnterAge);
             string intStr = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(intStr))
             {
-                ConsoleColor.Red.WriteConsole("Cannot be empty, please try again");
+                ConsoleColor.Red.WriteConsole(UserNotification.InputEmptyMessage);
                 goto Age;
             }
             int age;
             bool IsCorrectAge = int.TryParse(intStr, out age);
             if (IsCorrectAge is false)
             {
-                ConsoleColor.Red.WriteConsole("Format is wrong,please try again");
+                ConsoleColor.Red.WriteConsole(UserNotification.FormatWrongMessage);
                 goto Age;
             }
 
-            Email: ConsoleColor.DarkBlue.WriteConsole("Please enter your email");
+            Email: ConsoleColor.Yellow.WriteConsole(UserNotification.EnterMail);
             string email = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(email))
             {
-                ConsoleColor.Red.WriteConsole("Cannot be empty, please try again");
+                ConsoleColor.Red.WriteConsole(UserNotification.InputEmptyMessage);
                 goto Email;
             }
             else if (!email.CheckEmail())
             {
-                ConsoleColor.Red.WriteConsole("Format is wrong, please try again");
+                ConsoleColor.Red.WriteConsole(UserNotification.FormatWrongMessage);
                 goto Email;
             }
             else
@@ -70,21 +71,21 @@ namespace ConsoleApp.Controllers
                 email.CheckEmail();
             }
             
-            Password: ConsoleColor.White.WriteConsole("Please enter your password");
+            Password: ConsoleColor.Yellow.WriteConsole(UserNotification.EnterPassword);
             string password = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(password))
             {   
-                ConsoleColor.Red.WriteConsole("Cannot be empty, please try again");
+                ConsoleColor.Red.WriteConsole(UserNotification.InputEmptyMessage);
                 goto Password;
             }
 
-            ConsoleColor.White.WriteConsole("Please enter your confirmpassword");
+            ConsoleColor.Yellow.WriteConsole(UserNotification.EnterConfirmPassword);
             string confirmPassword = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(confirmPassword) || confirmPassword != password)
             {
-                ConsoleColor.Red.WriteConsole("Password does not match ,please try again");
+                ConsoleColor.Red.WriteConsole(UserNotification.PasswordWrong);
                 goto Password;
             }
 
@@ -96,48 +97,48 @@ namespace ConsoleApp.Controllers
                 Age = age,
                 Email = email,
                 Password = password
-
             };
 
             _userService.Register(user);
 
-            ConsoleColor.DarkGreen.WriteConsole("Registration is successfull");
+            ConsoleColor.DarkGreen.WriteConsole(UserNotification.RegisterSuccess);
         }
 
 
         public void Login()
         {
-            Email: ConsoleColor.DarkBlue.WriteConsole("Please enter your email:");
+            Email: ConsoleColor.Yellow.WriteConsole(UserNotification.EnterMail);
             string email = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(email))
             {
-                ConsoleColor.Red.WriteConsole("Cannot be empty, please try again");
+                ConsoleColor.Red.WriteConsole(UserNotification.InputEmptyMessage);
                 
             }
             else if (!email.CheckEmail())
             {
-                ConsoleColor.Red.WriteConsole("Format is wrong, please try again");
+                ConsoleColor.Red.WriteConsole(UserNotification.FormatWrongMessage);
+                
                 
             }
 
-            ConsoleColor.White.WriteConsole("Please enter your password:");
+            ConsoleColor.Yellow.WriteConsole(UserNotification.EnterPassword);
             string password = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(password))
             {
-                ConsoleColor.Red.WriteConsole("Cannot be empty, please try again");
+                ConsoleColor.Red.WriteConsole(UserNotification.InputEmptyMessage);
             }
 
 
 
             if (_userService.Login(email, password))
             {
-                ConsoleColor.Green.WriteConsole("Login Successfull");
+                ConsoleColor.Green.WriteConsole(UserNotification.LoginSuccess);
             }
             else
             {
-                ConsoleColor.Red.WriteConsole("Username or password incorrect");
+                ConsoleColor.Red.WriteConsole(UserNotification.LoginIsUnsuccess);
                 goto Email;
             }
 

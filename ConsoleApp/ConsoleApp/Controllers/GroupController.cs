@@ -3,6 +3,7 @@ using System.Xml.Linq;
 using Domain.Models;
 using Repository.Enums;
 using Service.Exceptions;
+using Service.Helpers.Constants;
 using Service.Helpers.Extensions;
 using Service.Services;
 using Service.Services.İnterfaces;
@@ -20,28 +21,28 @@ namespace ConsoleApp.Controllers
 
 		public void Create()
 		{
-            Name: ConsoleColor.Cyan.WriteConsole("Please enter groupname:");
+            Name: ConsoleColor.DarkCyan.WriteConsole(GroupNotification.EnterGroupname);
 			string name = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(name))
             {
-                ConsoleColor.Red.WriteConsole("Cannot be empty, please try again");
+                ConsoleColor.Red.WriteConsole(GroupNotification.InputEmptyMessage);
                 goto Name;
             }
 
-            Cpacity: ConsoleColor.Cyan.WriteConsole("Please enter capacity:");
+            Cpacity: ConsoleColor.DarkCyan.WriteConsole(GroupNotification.EnterCapacity);
             string capacityStr = Console.ReadLine();
             int capacity;
             bool isCorrectCapacity = int.TryParse(capacityStr, out capacity);
             if (isCorrectCapacity is false)
             {
-                ConsoleColor.Red.WriteConsole("Format is wrong,please try again");
+                ConsoleColor.Red.WriteConsole(GroupNotification.FormatWrongMessage);
                 goto Cpacity;
             }
 
             if (string.IsNullOrWhiteSpace(capacityStr))
             {
-                ConsoleColor.Red.WriteConsole("Cannot be empty, please try again");
+                ConsoleColor.Red.WriteConsole(GroupNotification.InputEmptyMessage);
                 goto Cpacity;
 
             }
@@ -51,7 +52,7 @@ namespace ConsoleApp.Controllers
                 Name = name,
                 Capacity = capacity
             };
-            ConsoleColor.DarkGreen.WriteConsole("Group create successed");
+            ConsoleColor.DarkGreen.WriteConsole(GroupNotification.GroupCreateSuccess);
 
             _groupService.Create(group);
         }
@@ -64,22 +65,22 @@ namespace ConsoleApp.Controllers
             foreach (var item in response)
             {
                 var res = $"Name:{item.Name} ; Capacity:{item.Capacity}";
-                ConsoleColor.Cyan.WriteConsole(res);
+                ConsoleColor.DarkCyan.WriteConsole(res);
             }
         }
 
 
         public void Delete()
         {
+            Delete: ConsoleColor.DarkCyan.WriteConsole(GroupNotification.EnterGroupId);
             Id: string IdStr = Console.ReadLine();
             try
             {
-                Delete: ConsoleColor.Cyan.WriteConsole("Please enter group id");
                 int id;
                 bool isCorrectId = int.TryParse(IdStr, out id);
                 if (string.IsNullOrWhiteSpace(IdStr))
                 {
-                    ConsoleColor.DarkGreen.WriteConsole("Cannot be empty");
+                    ConsoleColor.Red.WriteConsole(GroupNotification.InputEmptyMessage);
                     goto Delete;
                 }
                 if (isCorrectId)
@@ -87,15 +88,15 @@ namespace ConsoleApp.Controllers
                     var result = _groupService.GetById(id);
                     if(result is null)
                     {
-                        throw new NotFoundException("Data not found");
+                        throw new NotFoundException(GroupNotification.DataNotFound);
                     }
                     _groupService.Delete(result);
 
-                    ConsoleColor.DarkGreen.WriteConsole("Deletion was successful");
+                    ConsoleColor.DarkGreen.WriteConsole(GroupNotification.SuccessDelete);
                 }
                 else
                 {
-                    ConsoleColor.Red.WriteConsole("Id format is wrong, please try again");
+                    ConsoleColor.Red.WriteConsole(GroupNotification.IdFormatWrongMessage);
                     goto Id;
                 }
             }
@@ -110,7 +111,7 @@ namespace ConsoleApp.Controllers
 
         public void Sorting()
         {
-            ConsoleColor.Cyan.WriteConsole("Please select sort type: 1.Ascending , 2.Descending");
+            ConsoleColor.DarkCyan.WriteConsole(GroupNotification.SelectSortType);
             Sorting: string sortStr = Console.ReadLine();
             int sortType;
             bool isCorrectSortType = int.TryParse(sortStr, out sortType);
@@ -133,35 +134,35 @@ namespace ConsoleApp.Controllers
                     foreach (var item in result)
                     {
                         var res = $"Name:{item.Name} ; Capacity:{item.Capacity}";
-                        ConsoleColor.Cyan.WriteConsole(res);
+                        ConsoleColor.DarkCyan.WriteConsole(res);
                     }
                 }
                 else
                 {
-                    ConsoleColor.Red.WriteConsole("Sortype is wrong, please try again");
+                    ConsoleColor.Red.WriteConsole(GroupNotification.WrongSortType);
                     goto Sorting;
                 }
-                
             }
             else
             {
-                ConsoleColor.Red.WriteConsole("Sortype format is wrong, please try again");
+                ConsoleColor.Red.WriteConsole(GroupNotification.FormatWrongSortType);
                 goto Sorting;
             }
 
         }
+
 
         public void Edit()
         {
             Id: string idStr = Console.ReadLine();
             try
             {
-                ConsoleColor.Cyan.WriteConsole("Please enter group id");
+                ConsoleColor.Cyan.WriteConsole(GroupNotification.EnterGroupId);
                 int id;
                 bool isCorrectId = int.TryParse(idStr, out id);
                 if (string.IsNullOrWhiteSpace(idStr))
                 {
-                    ConsoleColor.DarkGreen.WriteConsole("Cannot be empty");
+                    ConsoleColor.Red.WriteConsole(GroupNotification.InputEmptyMessage);
                     goto Id;
                 }
                 if (isCorrectId)
@@ -169,30 +170,30 @@ namespace ConsoleApp.Controllers
                     var result = _groupService.GetById(id);
                     if (result is null)
                     {
-                        throw new NotFoundException("Data not found");
+                        throw new NotFoundException(GroupNotification.DataNotFound);
                     }
 
-                    ConsoleColor.Cyan.WriteConsole("Add name: ");
+                    ConsoleColor.Cyan.WriteConsole(GroupNotification.EnterGroupname);
                     string name = Console.ReadLine();
 
-                    ConsoleColor.Cyan.WriteConsole("Add capacity: ");
+                    ConsoleColor.Cyan.WriteConsole(GroupNotification.EnterCapacity);
                     Capacity: string capacityStr = Console.ReadLine();
 
                     int capacity;
                     bool isCorrectCapacity = int.TryParse(capacityStr, out capacity);
                     if (!isCorrectCapacity)
                     {
-                        ConsoleColor.Red.WriteConsole("Capacity format is wrong");
+                        ConsoleColor.Red.WriteConsole(GroupNotification.CapacityFormatWrongMessage);
                         goto Capacity;
                     }
                     _groupService.Edit(id, new Group { Name = name, Capacity = capacity });
-                    ConsoleColor.DarkGreen.WriteConsole("Edit Successfull");
+                    ConsoleColor.DarkGreen.WriteConsole(GroupNotification.EditSuccess);
 
 
                 }
                 else
                 {
-                    ConsoleColor.Red.WriteConsole("Id format is wrong, please try again");
+                    ConsoleColor.Red.WriteConsole(GroupNotification.IdFormatWrongMessage);
                     goto Id;
                 }
                
@@ -203,11 +204,58 @@ namespace ConsoleApp.Controllers
                 ConsoleColor.Red.WriteConsole(ex.Message);
                 goto Id;
             }
-
-
         }
 
 
+        public void GetById()
+        {
+            Id: ConsoleColor.DarkCyan.WriteConsole(GroupNotification.EnterGroupId);
+            string idStr = Console.ReadLine();
+            int id;
+            bool isCorrectId = int.TryParse(idStr, out id);
+            if (string.IsNullOrWhiteSpace(idStr))
+            {
+                ConsoleColor.Red.WriteConsole(GroupNotification.InputEmptyMessage);
+                goto Id;
+            }
+            if (isCorrectId)
+            {
+                ConsoleColor.Red.WriteConsole(GroupNotification.IdFormatWrongMessage);
+                goto Id;
+            }
+
+            Group group = _groupService.GetById(id);
+            if(group is null)
+            {
+                ConsoleColor.Red.WriteConsole(GroupNotification.GroupNotFound);
+                goto Id;
+
+            }
+        }
+
+
+        public void Search()
+        {
+            Text: ConsoleColor.DarkGreen.WriteConsole(GroupNotification.EnterSearchText);
+            string text = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                ConsoleColor.Red.WriteConsole(GroupNotification.InputEmptyMessage);
+                goto Text;
+            }
+
+            var response = _groupService.Search(text);
+            var result = _groupService.GetAll();
+            foreach (var item in result)
+            {
+                var res = $" Name - {item.Name} ; Capacity - {item.Capacity}";
+                ConsoleColor.DarkCyan.WriteConsole(res);
+
+            }
+
+
+        }
     }
 }
 
