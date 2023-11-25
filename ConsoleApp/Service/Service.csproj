@@ -12,6 +12,7 @@
     <None Remove="Helpers\" />
     <None Remove="Helpers\Extensions\" />
     <None Remove="Helpers\Constants\" />
+    <None Remove="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
@@ -19,6 +20,7 @@
     <Folder Include="Helpers\" />
     <Folder Include="Helpers\Extensions\" />
     <Folder Include="Helpers\Constants\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Repository\Repository.csproj" />

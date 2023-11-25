@@ -18,7 +18,7 @@ namespace ConsoleApp.Controllers
 
         public void Register()
         {
-            Name: ConsoleColor.DarkBlue.WriteConsole("Please enter you name:");
+            Name: ConsoleColor.DarkBlue.WriteConsole("Please enter your name:");
             string name = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(name))
@@ -27,7 +27,7 @@ namespace ConsoleApp.Controllers
                 goto Name;
             }
 
-            Surname: ConsoleColor.DarkBlue.WriteConsole("Please enter you surname:");
+            Surname: ConsoleColor.DarkBlue.WriteConsole("Please enter your surname:");
             string surname = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(surname))
@@ -37,7 +37,7 @@ namespace ConsoleApp.Controllers
             }
 
             
-            Age: ConsoleColor.DarkBlue.WriteConsole("Please enter you age:");
+            Age: ConsoleColor.DarkBlue.WriteConsole("Please enter your age:");
             string intStr = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(intStr))
             {
@@ -79,13 +79,13 @@ namespace ConsoleApp.Controllers
                 goto Password;
             }
 
-            ConfirmPassword: ConsoleColor.White.WriteConsole("Please enter your confirmpassword");
+            ConsoleColor.White.WriteConsole("Please enter your confirmpassword");
             string confirmPassword = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(confirmPassword) || confirmPassword != password)
             {
                 ConsoleColor.Red.WriteConsole("Password does not match ,please try again");
-                goto ConfirmPassword;
+                goto Password;
             }
 
 
@@ -104,6 +104,7 @@ namespace ConsoleApp.Controllers
             ConsoleColor.DarkGreen.WriteConsole("Registration is successfull");
         }
 
+
         public void Login()
         {
             Email: ConsoleColor.DarkBlue.WriteConsole("Please enter your email:");
@@ -112,37 +113,35 @@ namespace ConsoleApp.Controllers
             if (string.IsNullOrWhiteSpace(email))
             {
                 ConsoleColor.Red.WriteConsole("Cannot be empty, please try again");
-                goto Email;
+                
             }
             else if (!email.CheckEmail())
             {
                 ConsoleColor.Red.WriteConsole("Format is wrong, please try again");
-                goto Email;
-            }
-            else
-            {
-                email.CheckEmail();
+                
             }
 
-            Password: ConsoleColor.White.WriteConsole("Please enter your password:");
+            ConsoleColor.White.WriteConsole("Please enter your password:");
             string password = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(password))
             {
                 ConsoleColor.Red.WriteConsole("Cannot be empty, please try again");
-                goto Password;
             }
 
-            User user = new User()
+
+
+            if (_userService.Login(email, password))
             {
-                Email = email,
-                Password = password
+                ConsoleColor.Green.WriteConsole("Login Successfull");
+            }
+            else
+            {
+                ConsoleColor.Red.WriteConsole("Username or password incorrect");
+                goto Email;
+            }
 
-            };
-
-            _userService.Login(email,password);
-
-            ConsoleColor.DarkGreen.WriteConsole("Login success");
+           
 
         }
 

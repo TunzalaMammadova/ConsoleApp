@@ -11,7 +11,6 @@ GroupController groupController = new();
 
 //userController.Register();
 //userController.Login();
-
 //groupController.Create();
 //groupController.GetAll();
 
@@ -39,10 +38,16 @@ while (true)
                 groupController.Create();
                 break;
             case (int)OperationType.GroupGetAll:
-                break;
                 groupController.GetAll();
+                break;
             case (int)OperationType.GroupDelete:
                 groupController.Delete();
+                break;
+            case (int)OperationType.GroupSorting:
+                groupController.Sorting();
+                break;
+            case (int)OperationType.GroupEdit:
+                groupController.Edit();
                 break;
 
 
@@ -71,4 +76,9 @@ static void GetMenues()
 }
 
 
+static void Menues()
+{
+    ConsoleColor.DarkBlue.WriteConsole("Group operations: 3.Create, 4.Delete, 5.Edit, 6.Search, 7.Sort, 8.GetById, 9.GetAll");
+    ConsoleColor.DarkBlue.WriteConsole("Student operations: 10.Create, 11.Delete, 12.Edit, 13.Search, 14.Sort, 15.GetById, 16.GetAll");
 
+}

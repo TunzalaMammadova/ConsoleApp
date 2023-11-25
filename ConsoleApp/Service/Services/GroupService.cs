@@ -1,5 +1,6 @@
 ﻿using System;
 using Domain.Models;
+using Repository.Data;
 using Repository.Enums;
 using Repository.Repositories;
 using Repository.Repositories.İnterfaces;
@@ -26,9 +27,10 @@ namespace Service.Services
             _groupRepository.Delete(group);
         }
 
-        public void Edit(int id, Group group)
+        public void Edit(int id,Group group)
         {
-            _groupRepository.Edit(id,group);
+            _groupRepository.Edit(id, group);
+
         }
 
         public List<Group> GetAll() => _groupRepository.GetAll();

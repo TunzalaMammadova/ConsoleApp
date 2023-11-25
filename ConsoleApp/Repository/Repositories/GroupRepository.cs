@@ -23,9 +23,26 @@ namespace Repository.Repositories
                     return AppDbContext<Group>.Datas.OrderByDescending(m => m.Capacity).ToList();
 
             }
+            return default;
+        }
+        
 
-            return null;
+        public void Edit(Group group,int id)
+        {
+            Group existGroup = GetById(id);
+            if(existGroup is not null)
+            {
+                if (!string.IsNullOrWhiteSpace(existGroup.Name))
+                    existGroup.Name = group.Name;
+
+                if (existGroup is not null)
+                    existGroup.Capacity = group.Capacity;
+            }
+    
         }
     }
 }
+
+
+
 

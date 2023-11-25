@@ -24,7 +24,7 @@ namespace Repository.Repositories
 
             }
 
-            return null;
+            return default;
         }
     }
 }

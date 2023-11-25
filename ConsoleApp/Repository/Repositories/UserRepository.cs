@@ -15,7 +15,7 @@ namespace Repository.Repositories
 
         public void Register(User user)
         {
-            var res = AppDbContext<User>.Datas;
+            AppDbContext<User>.Datas.Add(user);
         }
     }
 }
