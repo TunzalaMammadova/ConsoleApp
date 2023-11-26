@@ -8,7 +8,6 @@ namespace Repository.Repositories.İnterfaces
 	{
 		void Create(T entity);
 		void Delete(T entity);
-		void Edit(int id,T entity);
         T GetById(int id);
         List<T> GetAll();
     }

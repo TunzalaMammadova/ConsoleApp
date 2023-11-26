@@ -8,6 +8,7 @@ namespace Repository.Repositories.İnterfaces
 	{
         List<Student> Search(string searchText);
         List<Student> Sort(SortType sort);
+        void Edit(int id, Student student);
     }
 }
 

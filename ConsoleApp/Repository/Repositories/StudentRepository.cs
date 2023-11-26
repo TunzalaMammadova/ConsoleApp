@@ -10,7 +10,7 @@ namespace Repository.Repositories
     {
         public List<Student> Search(string searchText)
         {
-            return AppDbContext<Student>.Datas.Where(m => m.FullName == searchText).ToList();
+            return AppDbContext<Student>.Datas.Where(m => m.FullName.ToLower().Trim().Contains(searchText.Trim().ToLower())).ToList();
         }
 
         public List<Student> Sort(SortType sort)
@@ -25,6 +25,26 @@ namespace Repository.Repositories
             }
 
             return default;
+        }
+
+        public void Edit(int id, Student student)
+        {
+            var result = GetById(id);
+            if (result is not null)
+            {
+                if (!string.IsNullOrWhiteSpace(result.FullName))
+                    result.FullName = student.FullName;
+
+                if (!string.IsNullOrWhiteSpace(result.Address))
+                    result.Address = student.Address;
+
+                if (student.Age is not null)
+                    result.Age = student.Age;
+
+                if (student.Group is not null)
+                    result.Group = student.Group;
+            }
+
         }
     }
 }

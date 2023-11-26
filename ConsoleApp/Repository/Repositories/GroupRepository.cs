@@ -10,8 +10,9 @@ namespace Repository.Repositories
     {
         public List<Group> Search(string searchText)
         {
-            return AppDbContext<Group>.Datas.Where(m => m.Name == searchText).ToList();
+            return AppDbContext<Group>.Datas.Where(m => m.Name.ToLower().Trim().Contains(searchText.Trim().ToLower())).ToList();
         }
+
 
         public List<Group> Sort(SortType sort)
         {
@@ -27,16 +28,16 @@ namespace Repository.Repositories
         }
         
 
-        public void Edit(Group group,int id)
+        public void Edit(int id, Group group)
         {
-            Group existGroup = GetById(id);
-            if(existGroup is not null)
+            var result  = GetById(id);
+            if(result is not null)
             {
-                if (!string.IsNullOrWhiteSpace(existGroup.Name))
-                    existGroup.Name = group.Name;
+                if (!string.IsNullOrWhiteSpace(result.Name))
+                    result.Name = group.Name;
 
-                if (existGroup is not null)
-                    existGroup.Capacity = group.Capacity;
+                if (group.Capacity is not null)
+                    result.Capacity = group.Capacity;
             }
     
         }

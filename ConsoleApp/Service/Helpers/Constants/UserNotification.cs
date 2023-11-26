@@ -13,6 +13,7 @@ namespace Service.Helpers.Constants
         public const string FormatWrongMessage = "Format is wrong, please try again";
         public const string PasswordWrong = "Password does not match ,please try again";
         public const string LoginIsUnsuccess = "Username or password incorrect";
+        public const string InCorrectAgeMessage = "Please enter correct age";
         public const string RegisterSuccess = "Registration Successfull";
         public const string LoginSuccess = "Login Successfull";
     }

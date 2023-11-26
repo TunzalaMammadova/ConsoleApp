@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Numerics;
+
 namespace Service.Helpers.Constants
 {
 	public class GroupNotification
 	{
-        public const string EnterGroupname = "Please enter groupname:";
+        public const string EnterGroupname = "Please enter Groupname:";
         public const string EnterCapacity = "Please enter Capacity:";
-        public const string EnterGroupId = "Please enter group id:";
-        public const string EnterSearchText = "Please enter searchtext:";
-        public const string EnterAge = "Please enter your Age:";
+        public const string EnterGroupId = "Please enter Group id:";
+        public const string EnterSearchText = "Please enter Searchtext:";
         public const string InputEmptyMessage = "Cannot be empty, please try again";
         public const string FormatWrongMessage = "Format is wrong, please try again";
         public const string IdFormatWrongMessage = "Id format is wrong, please try again";
@@ -20,6 +21,8 @@ namespace Service.Helpers.Constants
         public const string GroupNotFound = "Group not found";
         public const string EditSuccess = "Edit Successfull";
         public const string GroupCreateSuccess = "Group create success";
+        public const string SameGroupError = "Group already exists, please create a new group";
+        
 
     }
 }

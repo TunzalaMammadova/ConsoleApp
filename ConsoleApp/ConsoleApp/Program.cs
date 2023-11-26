@@ -19,24 +19,24 @@ while (true)
     string operationStr = Console.ReadLine();
     int operation;
     bool isCorrectOperation = int.TryParse(operationStr, out operation);
-    
-    
-        switch (operation)
-        {
-            case (int)OperationType.Register:
-                userController.Register();
-                break;
-            case (int)OperationType.Login:
-                userController.Login();
-                goto NextOperation;
-            default:
+
+
+    switch (operation)
+    {
+        case (int)OperationType.Register:
+            userController.Register();
+            break;
+        case (int)OperationType.Login:
+            userController.Login();
+            goto NextOperation;
+        default:
             ConsoleColor.Red.WriteConsole("Operation format is wrong,please select again:");
-                break;
+            break;
 
-               
 
-        }
-  
+
+    }
+
 }
 NextOperation: Console.WriteLine("Welcome our application");
 
@@ -50,8 +50,6 @@ while (true)
     int operation;
     bool isCorrectOperation = int.TryParse(operationStr, out operation);
 
-    if (isCorrectOperation)
-    {
         switch (operation)
         {   
             case (int)OperationType.GroupCreate:
@@ -91,7 +89,7 @@ while (true)
                 studentController.Sorting();
                 break;
             case (int)OperationType.StudentGetById:
-                studentController.GetById();
+            studentController.GetById();
                 break;
             case (int)OperationType.StudentGetAll:
                 studentController.GetAll();
@@ -100,7 +98,7 @@ while (true)
                 ConsoleColor.Red.WriteConsole("Operation format is wrong,please select again:");
                 break;
         }
-    }
+    
 }
 
 
@@ -117,8 +115,8 @@ static void GetMenues()
 
 static void Menues()
 {
-    ConsoleColor.DarkBlue.WriteConsole("Group operations: 3.Create, 4.Delete, 5.Edit, 6.Search, 7.Sort, 8.GetById, 9.GetAll");
-    ConsoleColor.DarkBlue.WriteConsole("Student operations: 10.Create, 11.Delete, 12.Edit, 13.Search, 14.Sort, 15.GetById, 16.GetAll");
+    ConsoleColor.White.WriteConsole("Group operations: 3.Create, 4.Delete, 5.Edit, 6.Search, 7.Sort, 8.GetById, 9.GetAll");
+    ConsoleColor.White.WriteConsole("Student operations: 10.Create, 11.Delete, 12.Edit, 13.Search, 14.Sort, 15.GetById, 16.GetAll");
 
 }
 
