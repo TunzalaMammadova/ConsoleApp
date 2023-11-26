@@ -38,6 +38,7 @@ namespace Repository.Repositories
 
                 if (group.Capacity is not null)
                     result.Capacity = group.Capacity;
+                
             }
     
         }

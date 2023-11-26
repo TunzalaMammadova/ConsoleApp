@@ -38,12 +38,16 @@ namespace Repository.Repositories
                 if (!string.IsNullOrWhiteSpace(result.Address))
                     result.Address = student.Address;
 
+                if (!string.IsNullOrWhiteSpace(result.Phone))
+                    result.Phone = student.Phone;
+
                 if (student.Age is not null)
                     result.Age = student.Age;
 
                 if (student.Group is not null)
                     result.Group = student.Group;
             }
+
 
         }
     }

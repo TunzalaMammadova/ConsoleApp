@@ -1,9 +1,8 @@
 ﻿using System.Numerics;
 using ConsoleApp.Controllers;
 using Repository.Enums;
+using Service.Helpers.Constants;
 using Service.Helpers.Extensions;
-
-
 
 
 UserController userController = new();
@@ -12,43 +11,38 @@ StudentController studentController = new();
 
 
 
-while (true)
+while (!true)
 {
-    GetMenues();
+   GetMenues();
 
     string operationStr = Console.ReadLine();
     int operation;
     bool isCorrectOperation = int.TryParse(operationStr, out operation);
 
-
-    switch (operation)
-    {
-        case (int)OperationType.Register:
-            userController.Register();
-            break;
-        case (int)OperationType.Login:
-            userController.Login();
-            goto NextOperation;
-        default:
-            ConsoleColor.Red.WriteConsole("Operation format is wrong,please select again:");
-            break;
-
-
-
-    }
-
+        switch (operation)
+        {
+           case (int)OperationType.Register:
+               userController.Register();
+               break;
+           case (int)OperationType.Login:
+               userController.Login();
+               goto NextOperation;
+           default:
+               ConsoleColor.Red.WriteConsole(ConsoleNotification.OperationFormatWrong);
+               break;
+        }
 }
-NextOperation: Console.WriteLine("Welcome our application");
 
 
+NextOperation: Console.WriteLine(ConsoleNotification.Welcome);
 
 while (true)
 {
   Menues();
 
-    string operationStr = Console.ReadLine();
-    int operation;
-    bool isCorrectOperation = int.TryParse(operationStr, out operation);
+     string operationStr = Console.ReadLine();
+     int operation;
+     bool isCorrectOperation = int.TryParse(operationStr, out operation);
 
         switch (operation)
         {   
@@ -95,7 +89,7 @@ while (true)
                 studentController.GetAll();
                 break;
             default:
-                ConsoleColor.Red.WriteConsole("Operation format is wrong,please select again:");
+                ConsoleColor.Red.WriteConsole(ConsoleNotification.OperationFormatWrong);
                 break;
         }
     
@@ -106,16 +100,19 @@ while (true)
 
 
 
+
+
+
 static void GetMenues()
 {
-    ConsoleColor.White.WriteConsole("Please select option: 1.Register 2.Login");
+    ConsoleColor.White.WriteConsole("Please select option: 1. Register 2. Login");
     
 }
 
 
 static void Menues()
 {
-    ConsoleColor.White.WriteConsole("Group operations: 3.Create, 4.Delete, 5.Edit, 6.Search, 7.Sort, 8.GetById, 9.GetAll");
+    ConsoleColor.White.WriteConsole("\nGroup operations: 3.Create, 4.Delete, 5.Edit, 6.Search, 7.Sort, 8.GetById, 9.GetAll");
     ConsoleColor.White.WriteConsole("Student operations: 10.Create, 11.Delete, 12.Edit, 13.Search, 14.Sort, 15.GetById, 16.GetAll");
 
 }

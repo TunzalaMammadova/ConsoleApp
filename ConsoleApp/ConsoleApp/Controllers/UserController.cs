@@ -56,11 +56,11 @@ namespace ConsoleApp.Controllers
 
             if (age <= 14 || age > 100)
             {
-                ConsoleColor.Red.WriteConsole("Age must be minimum:15 ; maximum:100");
+                ConsoleColor.Red.WriteConsole(UserNotification.CorrectAge);
                 goto Age;
             }
 
-        Email: ConsoleColor.Yellow.WriteConsole(UserNotification.EnterMail);
+            Email: ConsoleColor.Yellow.WriteConsole(UserNotification.EnterMail);
             string email = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(email))
@@ -68,14 +68,14 @@ namespace ConsoleApp.Controllers
                 ConsoleColor.Red.WriteConsole(UserNotification.InputEmptyMessage);
                 goto Email;
             }
-            else if (!email.CheckEmail())
+            else if (!email.EmailFormat())
             {
                 ConsoleColor.Red.WriteConsole(UserNotification.FormatWrongMessage);
                 goto Email;
             }
             else
             {
-                email.CheckEmail();
+                email.EmailFormat();
             }
             
             Password: ConsoleColor.Yellow.WriteConsole(UserNotification.EnterPassword);
@@ -122,7 +122,7 @@ namespace ConsoleApp.Controllers
                 ConsoleColor.Red.WriteConsole(UserNotification.InputEmptyMessage);
                 goto Email;
             }
-            else if (!email.CheckEmail())
+            else if (!email.EmailFormat())
             {
                 ConsoleColor.Red.WriteConsole(UserNotification.FormatWrongMessage);
                 goto Email;

@@ -41,21 +41,27 @@ namespace ConsoleApp.Controllers
                 }
             }
 
-            Cpacity: ConsoleColor.DarkCyan.WriteConsole(GroupNotification.EnterCapacity);
+            Capacity: ConsoleColor.DarkCyan.WriteConsole(GroupNotification.EnterCapacity);
             string capacityStr = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(capacityStr))
+            {
+                ConsoleColor.Red.WriteConsole(GroupNotification.InputEmptyMessage);
+                goto Capacity;
+
+            }
             int capacity;
             bool isCorrectCapacity = int.TryParse(capacityStr, out capacity);
             if (isCorrectCapacity is false)
             {
                 ConsoleColor.Red.WriteConsole(GroupNotification.FormatWrongMessage);
-                goto Cpacity;
+                goto Capacity;
             }
 
-            if (string.IsNullOrWhiteSpace(capacityStr))
+            if (capacity < 0 || capacity > 30)
             {
-                ConsoleColor.Red.WriteConsole(GroupNotification.InputEmptyMessage);
-                goto Cpacity;
-
+                ConsoleColor.Red.WriteConsole(GroupNotification.CapacityRange);
+                goto Capacity;
             }
 
             Group group = new()
@@ -66,6 +72,7 @@ namespace ConsoleApp.Controllers
             ConsoleColor.DarkGreen.WriteConsole(GroupNotification.GroupCreateSuccess);
 
             _groupService.Create(group);
+
         }
 
 
@@ -83,6 +90,11 @@ namespace ConsoleApp.Controllers
 
         public void Delete()
         {
+            foreach (var item in _groupService.GetAll())
+            {
+                var datas = $"Id - {item.Id}; Name - {item.Name} ; Capacity - {item.Capacity}";
+                ConsoleColor.DarkCyan.WriteConsole(datas);
+            }
             Delete: ConsoleColor.DarkCyan.WriteConsole(GroupNotification.EnterGroupId);
             Id: string IdStr = Console.ReadLine();
             try
@@ -103,7 +115,7 @@ namespace ConsoleApp.Controllers
                     }
                     _groupService.Delete(result);
 
-                    ConsoleColor.DarkGreen.WriteConsole(GroupNotification.SuccessDelete);
+                    ConsoleColor.DarkGreen.WriteConsole(GroupNotification.DeleteSuccess);
                 }
                 else
                 {
@@ -165,6 +177,11 @@ namespace ConsoleApp.Controllers
 
         public void Edit()
         {
+            foreach (var item in _groupService.GetAll())
+            {
+                var datas = $"Id - {item.Id}; Name - {item.Name} ; Capacity - {item.Capacity}";
+                ConsoleColor.DarkCyan.WriteConsole(datas);
+            }
             ConsoleColor.Cyan.WriteConsole(GroupNotification.EnterGroupId);
             Id: string idStr = Console.ReadLine();
             try
@@ -181,12 +198,12 @@ namespace ConsoleApp.Controllers
                     var result = _groupService.GetById(id);
                     if (result is null)
                     {
-                        throw new NotFoundException(GroupNotification.DataNotFound);
+                        throw new NotFoundException(GroupNotification.GroupNotFound);
                     }
 
                     Name: ConsoleColor.Cyan.WriteConsole(GroupNotification.EnterGroupname);
                     string name = Console.ReadLine();
-                    var reponse = _groupService.GetAll();
+
                     foreach (var item in _groupService.GetAll())
                     {
                         if (name == item.Name)
@@ -195,18 +212,26 @@ namespace ConsoleApp.Controllers
                             goto Name;
 
                         }
+                        if(string.IsNullOrWhiteSpace(name))
+                        {
+                            name = item.Name;
+                            
+                        }
+                        
                     }
 
                     ConsoleColor.Cyan.WriteConsole(GroupNotification.EnterCapacity);
                     Capacity: string capacityStr = Console.ReadLine();
-
                     int capacity;
                     bool isCorrectCapacity = int.TryParse(capacityStr, out capacity);
 
+                    if (string.IsNullOrWhiteSpace(capacityStr))
+                    {
+                        capacity = (int)result.Capacity;
+                    }
+
                     _groupService.Edit(id, new Group { Name = name, Capacity = capacity });
                     ConsoleColor.DarkGreen.WriteConsole(GroupNotification.EditSuccess);
-
-
                 }
                 else
                 {
@@ -221,6 +246,7 @@ namespace ConsoleApp.Controllers
                 ConsoleColor.Red.WriteConsole(ex.Message);
                 goto Id;
             }
+
         }
 
 
@@ -265,12 +291,18 @@ namespace ConsoleApp.Controllers
             }
 
             var response = _groupService.Search(text);
+
+            if(response.Count == 0)
+            {
+                ConsoleColor.Red.WriteConsole(GroupNotification.GroupNotFound);
+                goto Text;
+            }
+
             foreach (var item in response)
             {
                 var res = $" Name - {item.Name} ; Capacity - {item.Capacity}";
                 ConsoleColor.DarkCyan.WriteConsole(res);
             }
-
 
         }
     }

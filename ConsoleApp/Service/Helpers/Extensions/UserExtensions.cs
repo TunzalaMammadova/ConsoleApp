@@ -9,6 +9,18 @@ namespace Service.Helpers.Extensions
 		{
 			return Regex.IsMatch(str,"@");
 		}
+
+
+		public static bool EmailFormat(this string email)
+		{
+			string res = (@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+
+            if (email is not null)
+			{
+				return Regex.IsMatch(email, res);
+			}
+			return false;
+		}
 	}
 }
 

@@ -43,6 +43,13 @@ namespace ConsoleApp.Controllers
 
             Phone: ConsoleColor.Cyan.WriteConsole(StudentNotification.EnterPhone);
             string phone = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(phone))
+            {
+                ConsoleColor.Red.WriteConsole(StudentNotification.InputEmptyMessage);
+                goto Phone;
+            }
+
             int phonestr;
             bool isCorrectPhone = int.TryParse(phone, out phonestr);
             if (isCorrectPhone is false)
@@ -50,14 +57,17 @@ namespace ConsoleApp.Controllers
                 ConsoleColor.Red.WriteConsole(StudentNotification.FormatWrongMessage);
                 goto Phone;
             }
-            if (string.IsNullOrWhiteSpace(phone))
-            {
-                ConsoleColor.Red.WriteConsole(StudentNotification.InputEmptyMessage);
-                goto Phone;
-            }
+
 
             Age: ConsoleColor.Cyan.WriteConsole(StudentNotification.EnterAge);
             string ageStr = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(ageStr))
+            {
+                ConsoleColor.Red.WriteConsole(StudentNotification.InputEmptyMessage);
+                goto Age;
+            }
+
             int age;
             bool isCorrectAge = int.TryParse(ageStr, out age);
             if (isCorrectAge is false)
@@ -72,13 +82,6 @@ namespace ConsoleApp.Controllers
                 goto Age;
             }
 
-            if (string.IsNullOrWhiteSpace(ageStr))
-            {
-                ConsoleColor.Red.WriteConsole(StudentNotification.InputEmptyMessage);
-                goto Age;
-            }
-
-
             Group: ConsoleColor.Cyan.WriteConsole(StudentNotification.EnterGroupIdForStudent);
             string groupStr = Console.ReadLine();
             int id;
@@ -91,11 +94,10 @@ namespace ConsoleApp.Controllers
             var res = _groupService.GetById(id);
             if (res is null)
             {
-                ConsoleColor.Red.WriteConsole(StudentNotification.InputEmptyMessage);
+                ConsoleColor.Red.WriteConsole(StudentNotification.DataNotFound);
                 goto Group;
 
             }
-
 
             Student student = new()
             {
@@ -105,9 +107,17 @@ namespace ConsoleApp.Controllers
                 Phone = phone,
                 Group = res
             };
+            
             ConsoleColor.DarkGreen.WriteConsole(StudentNotification.CreateSuccess);
-
+            
             _studentervice.Create(student);
+
+            var response = _studentervice.GetAll();
+            foreach (var item in response)
+            {
+                var result = $"Fullname: {item.FullName} ; Age: {item.Age} ; Address: {item.Address} ; Phone: {item.Phone} - Group: {item.Group.Name}";
+                ConsoleColor.Cyan.WriteConsole(result);
+            }
         }
 
 
@@ -117,7 +127,7 @@ namespace ConsoleApp.Controllers
 
             foreach (var item in response)
             {
-                var res = $"Fullname:{item.FullName} ; Age:{item.Age} ; Address:{item.Address} ; Phone:{item.Phone} - Group: {item.Group.Name}";
+                var res = $"Fullname: {item.FullName} ; Age: {item.Age} ; Address: {item.Address} ; Phone: {item.Phone} - Group: {item.Group.Name}";
                 ConsoleColor.Cyan.WriteConsole(res);
             }
         }
@@ -134,12 +144,19 @@ namespace ConsoleApp.Controllers
             }
 
             var response = _studentervice.Search(text);
+
+            if (response.Count == 0)
+            {
+                ConsoleColor.Red.WriteConsole(StudentNotification.StudentNotFound);
+                goto Text;
+            }
+
             foreach (var item in response)
             {
-                var res = $"Fullname:{item.FullName} ; Age:{item.Age} ; Address:{item.Address} ; Phone:{item.Phone} - Group: {item.Group.Name}";
-                ConsoleColor.DarkCyan.WriteConsole(res);
-
+                var res = $"Fullname: {item.FullName} ; Age: {item.Age} ; Address: {item.Address} ; Phone: {item.Phone} - Group: {item.Group.Name}";
+                ConsoleColor.Cyan.WriteConsole(res);
             }
+
         }
 
 
@@ -167,7 +184,7 @@ namespace ConsoleApp.Controllers
 
                     foreach (var item in result)
                     {
-                        var res = $"Fullname:{item.FullName} ; Age:{item.Age} ; Address:{item.Address} ; Phone:{item.Phone} - Group: {item.Group.Name}";
+                        var res = $"Fullname: {item.FullName} ; Age: {item.Age} ; Address: {item.Address} ; Phone: {item.Phone} - Group: {item.Group.Name}";
                         ConsoleColor.Cyan.WriteConsole(res);
                     }
                 }
@@ -211,13 +228,19 @@ namespace ConsoleApp.Controllers
                 goto Id;
 
             }
-            var res = $"Fullname:{student.FullName} ; Age:{student.Age} ; Address:{student.Address} ; Phone:{student.Phone} - Group: {student.Group.Name}";
+            var res = $"Fullname: {student.FullName} ; Age: {student.Age} ; Address: {student.Address} ; Phone: {student.Phone} - Group: {student.Group.Name}";
             ConsoleColor.DarkCyan.WriteConsole(res);
         }
 
 
+
         public void Delete()
         {
+            foreach (var item in _studentervice.GetAll())
+            {
+                var datas = $"Fullname: {item.FullName} ; Age: {item.Age} ; Address: {item.Address} ; Phone: {item.Phone} - Group: {item.Group.Name}";
+                ConsoleColor.DarkCyan.WriteConsole(datas);
+            }
             Delete: ConsoleColor.Cyan.WriteConsole(StudentNotification.EnterStudentId);
             Id: string IdStr = Console.ReadLine();
             try
@@ -256,7 +279,13 @@ namespace ConsoleApp.Controllers
 
         public void Edit()
         {
-            ConsoleColor.Cyan.WriteConsole(GroupNotification.EnterGroupId);
+            foreach (var item in _studentervice.GetAll())
+            {
+                var datas = $"Fullname: {item.FullName} ; Age: {item.Age} ; Address: {item.Address} ; Phone: {item.Phone} - Group: {item.Group.Name}";
+                ConsoleColor.DarkCyan.WriteConsole(datas);
+            }
+
+            ConsoleColor.Cyan.WriteConsole(StudentNotification.EnterGroupIdForStudent);
             Id: string idStr = Console.ReadLine();
             try
             {
@@ -264,7 +293,7 @@ namespace ConsoleApp.Controllers
                 bool isCorrectId = int.TryParse(idStr, out id);
                 if (string.IsNullOrWhiteSpace(idStr))
                 {
-                    ConsoleColor.Red.WriteConsole(GroupNotification.InputEmptyMessage);
+                    ConsoleColor.Red.WriteConsole(StudentNotification.InputEmptyMessage);
                     goto Id;
                 }
                 if (isCorrectId)
@@ -278,9 +307,24 @@ namespace ConsoleApp.Controllers
                     ConsoleColor.Cyan.WriteConsole(StudentNotification.EnterFullname);
                     string fullname = Console.ReadLine();
 
+                    foreach (var item in _studentervice.GetAll())
+                    {
+                        if (string.IsNullOrWhiteSpace(fullname))
+                        {
+                            fullname = item.FullName;
+                        }
+                    }
+
                     ConsoleColor.Cyan.WriteConsole(StudentNotification.EnterAddress);
                     string address = Console.ReadLine();
 
+                    foreach (var item in _studentervice.GetAll())
+                    {
+                        if (string.IsNullOrWhiteSpace(address))
+                        {
+                            address = item.Address;
+                        }
+                    }
 
                     Age: ConsoleColor.Cyan.WriteConsole(StudentNotification.EnterAge);
                     string ageStr = Console.ReadLine();
@@ -299,32 +343,44 @@ namespace ConsoleApp.Controllers
                         goto Age;
                     }
 
-                    ConsoleColor.Cyan.WriteConsole(StudentNotification.EnterPhone);
-                    Phone: string phone = Console.ReadLine();
+                    Phone: ConsoleColor.Cyan.WriteConsole(StudentNotification.EnterPhone);
+                    string phone = Console.ReadLine();
                     int phonestr;
                     bool isCorrectPhone = int.TryParse(phone, out phonestr);
+
+                    foreach (var item in _studentervice.GetAll())
+                    {
+                        if (string.IsNullOrWhiteSpace(phone))
+                        {
+                            phone = item.Phone;
+                        }
+                    }
+
                     if (isCorrectPhone is true)
                     {
                         goto GroupName;
                     }
-                    else
-                    {
-                        ConsoleColor.Red.WriteConsole(StudentNotification.FormatWrongMessage);
-                        goto Phone;
-                    }
-
+                    
                     GroupName: ConsoleColor.Cyan.WriteConsole(StudentNotification.EnterGroupName);
                     string groupname = Console.ReadLine();
 
 
-                    _studentervice.Edit(id, new Student { FullName = fullname, Address = address, Phone = phone, Age = age, Group = new Group { Name = groupname } });
-                    ConsoleColor.DarkGreen.WriteConsole(GroupNotification.EditSuccess);
+                    foreach (var item in _groupService.GetAll())
+                    {
+                        if (string.IsNullOrWhiteSpace(phone))
+                        {
+                            groupname = item.Name;
+                        }
 
+                    }
+
+                    _studentervice.Edit(id, new Student { FullName = fullname, Address = address, Phone = phone, Age = age, Group = new Group { Name = groupname } });
+                    ConsoleColor.DarkGreen.WriteConsole(StudentNotification.EditSuccess);
 
                 }
                 else
                 {
-                    ConsoleColor.Red.WriteConsole(GroupNotification.IdFormatWrongMessage);
+                    ConsoleColor.Red.WriteConsole(StudentNotification.IdFormatWrongMessage);
                     goto Id;
                 }
 
@@ -335,8 +391,6 @@ namespace ConsoleApp.Controllers
                 goto Id;
             }
         }
-
-
     }
 }
 
